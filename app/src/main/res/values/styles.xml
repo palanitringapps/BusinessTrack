@@ -8,6 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SlideToActView">
+        <item name="text">SlideToActView</item>
+        <item name="text_size">@dimen/slidetoact_default_text_size</item>
+        <item name="area_margin">@dimen/slidetoact_default_area_margin</item>
+        <item name="inner_color">?android:colorBackground</item>
+        <item name="outer_color">@color/colorPrimary</item>
+        <item name="slider_locked">false</item>
+    </style>
+
     <style name="forgot_style">
         <item name="android:width">0dp</item>
         <item name="android:height">24dp</item>
@@ -24,6 +33,13 @@
         <item name="android:layout_marginEnd">32dp</item>
         <item name="android:textColor">@color/lable</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="SlideToActView.Example">
+        <item name="android:elevation">6dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">8dp</item>
     </style>
 
 </resources>

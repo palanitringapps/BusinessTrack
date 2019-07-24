@@ -1,5 +1,6 @@
 package com.esri.arcgisruntime.displayroute
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -27,7 +28,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun navigateToHome() {
         if (validateField()) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java), ActivityOptions.makeCustomAnimation(this, R.anim.enter_right_in, R.anim.exit_left_out).toBundle())
         } else {
             Toast.makeText(this, getString(R.string.error),
                     Toast.LENGTH_SHORT).show()

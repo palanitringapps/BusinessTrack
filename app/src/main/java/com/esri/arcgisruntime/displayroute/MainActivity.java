@@ -1,8 +1,13 @@
 package com.esri.arcgisruntime.displayroute;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,6 +24,7 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.security.AuthenticationManager;
 import com.esri.arcgisruntime.security.DefaultAuthenticationChallengeHandler;
 import com.esri.arcgisruntime.security.OAuthConfiguration;
+import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import com.esri.arcgisruntime.symbology.SimpleLineSymbol;
 import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
 import com.esri.arcgisruntime.tasks.networkanalysis.Route;
@@ -44,44 +50,23 @@ public class MainActivity extends AppCompatActivity {
         mMapView.getGraphicsOverlays().add(mGraphicsOverlay);
     }
 
-    private void setMapMarker(Point location, SimpleMarkerSymbol.Style style, int markerColor, int outlineColor) {
-        float markerSize = 8.0f;
-        float markerOutlineThickness = 2.0f;
-        SimpleMarkerSymbol pointSymbol = new SimpleMarkerSymbol(style, markerColor, markerSize);
-        pointSymbol.setOutline(new SimpleLineSymbol(SimpleLineSymbol.Style.SOLID, outlineColor, markerOutlineThickness));
-        Graphic pointGraphic = new Graphic(location, pointSymbol);
+    private void setMapMarker(Point location) {
+        Graphic pointGraphic = new Graphic(location, marker());
         mGraphicsOverlay.getGraphics().add(pointGraphic);
     }
 
     private void setStartMarker(Point location) {
         mGraphicsOverlay.getGraphics().clear();
-        setMapMarker(location, SimpleMarkerSymbol.Style.TRIANGLE, Color.rgb(226, 119, 40), Color.BLUE);
+        setMapMarker(location);
         mStart = location;
         mEnd = null;
     }
 
     private void setEndMarker(Point location) {
-        setMapMarker(location, SimpleMarkerSymbol.Style.DIAMOND, Color.rgb(40, 119, 226), Color.RED);
+        setMapMarker(location);
         mEnd = location;
         findRoute();
     }
-
-    /*// Determine how to handle a tap on the map.
-    private void mapClicked(Point location) {
-        if (mStart == null) {
-            // Start is not set, set it to a tapped location
-            Point start = new Point(18.706210, 73.791160);
-            setStartMarker(start);
-        } else if (mEnd == null) {
-            Point end = new Point(12.971880, 80.218960);
-            // End is not set, set it to the tapped location then find the route
-            setEndMarker(end);
-        } else {
-            // Both locations are set; re-set the start to the tapped location
-            Point start = new Point(18.706210, 73.791160);
-            setStartMarker(location);
-        }
-    }*/
 
     // Find a route from mStart point to mEnd point.
     private void findRoute() {
@@ -152,20 +137,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mMapView = findViewById(R.id.mapView);
-        setupMap();
-        createGraphicsOverlay();
-        setupOAuthManager();
-        Point start = new Point(73.791160, 18.706210, SpatialReferences.getWgs84());
-        setStartMarker(start);
-        Point end = new Point(80.218960, 12.971880, SpatialReferences.getWgs84());
-        setEndMarker(end);
-    }
-
-    @Override
     protected void onPause() {
         if (mMapView != null) {
             mMapView.pause();
@@ -188,4 +159,31 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onDestroy();
     }
+
+    private PictureMarkerSymbol marker() {
+        final Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_truck);
+        final BitmapDrawable drawable = new BitmapDrawable(getResources(), icon);
+        final PictureMarkerSymbol markerSymbol = new PictureMarkerSymbol(drawable);
+        markerSymbol.setHeight(40);
+        markerSymbol.setWidth(40);
+        markerSymbol.setOffsetY(markerSymbol.getHeight() / 2);
+        markerSymbol.loadAsync();
+        return markerSymbol;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mMapView = findViewById(R.id.mapView);
+        setupMap();
+        createGraphicsOverlay();
+        setupOAuthManager();
+        Point start = new Point(73.791160, 18.706210, SpatialReferences.getWgs84());
+        setStartMarker(start);
+        Point end = new Point(80.218960, 12.971880, SpatialReferences.getWgs84());
+        setEndMarker(end);
+    }
 }
+
+

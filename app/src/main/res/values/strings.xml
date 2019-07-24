@@ -9,4 +9,18 @@
     <string name="enter_username">Please enter username</string>
     <string name="enter_password">Please enter password</string>
     <string name="forgot_password_msg">Password sent to your email Id</string>
+    <string name="complete">ON THE WAY \n Swipe to complete</string>
+    <string name="task_is">ID: 523473</string>
+    <string name="elapsed_time">Elapsed: 04:25</string>
+    <string name="date">27 June 2019, 14:25</string>
+    <string name="patrol">General Security, Patrol 1123</string>
+    <string name="dispatcher">Dispatcher Name: Mike Thomas</string>
+    <string name="accident">Accident</string>
+    <string name="name">Mbe Tshinguta</string>
+    <string name="phone">+1 123-457-960</string>
+    <string name="sample_address">Assimah, Al Safa, Block 10, Street 6, Jadda 3, House 12, Bld 9, Floor 2, Flat 6</string>
+    <string name="more_des">jsdbjkshnckj sj jsdbckjwdsckj jjlwekbjdnj jhesbcjkwn wjelbcjwj w jc wjsdbcm jndbnx dmnbc jk xmdkb mnd vmn</string>
+    <string name="task_new">New</string>
+    <string name="in_progress">In progress</string>
+    <string name="completed">Completed</string>
 </resources>

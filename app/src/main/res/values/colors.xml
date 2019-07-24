@@ -8,4 +8,10 @@
     <color name="login_bg">#FFFFFF</color>
     <color name="login_txt">#2A95FA</color>
     <color name="sign_screen_bg">#2998F8</color>
+    <color name="green">#31E749</color>
+    <color name="grey">#B6BDBB</color>
+    <color name="slidetoact_white">#FFFFFF</color>
+    <color name="elapse_color">#F50859</color>
+    <color name="card_bg">#F5F5F5</color>
+    <!--<color name="slidetoact_defaultAccent">#FF4081</color>-->
 </resources>

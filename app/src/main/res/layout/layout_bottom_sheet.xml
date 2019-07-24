@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    android:id="@+id/bottomsheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="4dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="40dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    xsi:schemaLocation="http://schemas.android.com/apk/res-auto ">
+
+
+    <com.esri.arcgisruntime.displayroute.SlideToActView
+        android:id="@+id/status"
+        style="@style/SlideToActView.Example"
+        android:layout_marginBottom="20dp"
+        app:area_margin="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:text="@string/complete" />
+
+</LinearLayout>

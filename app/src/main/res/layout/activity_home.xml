@@ -7,21 +7,23 @@
         android:layout_height="match_parent"
         android:background="@color/sign_screen_bg">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_profile"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:src="@color/lable"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholderImage="@color/lable"
+            app:roundAsCircle="true" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginStart="12dp"
+            android:text="Hello, Mike"
             android:textColor="@color/lable"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -32,8 +34,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_setting"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/ic_settings_"
             app:layout_constraintBottom_toBottomOf="@id/iv_profile"
@@ -53,9 +55,9 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_height="0dp"
             android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabLayout" />
