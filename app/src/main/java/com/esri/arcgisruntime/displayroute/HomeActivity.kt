@@ -16,8 +16,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bind = DataBindingUtil.setContentView(this, R.layout.activity_home)
         init()
-        val uri = Uri.parse("https://raw.githubusercontent.com/facebook/fresco/master/docs/static/logo.png")
+        val receive = intent
+        val name = receive!!.getStringExtra("Name")
+        val uri = Uri.parse(getString(R.string.photo))
         bind.ivProfile.setImageURI(uri)
+        bind.tvName.text = "Hello, " + name
     }
 
     private fun init() {

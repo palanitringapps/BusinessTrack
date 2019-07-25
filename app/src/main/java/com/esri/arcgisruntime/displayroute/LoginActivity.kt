@@ -28,7 +28,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun navigateToHome() {
         if (validateField()) {
-            startActivity(Intent(this, HomeActivity::class.java), ActivityOptions.makeCustomAnimation(this, R.anim.enter_right_in, R.anim.exit_left_out).toBundle())
+
+            var intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("Name", bind.etUsername.text.toString())
+            startActivity(intent, ActivityOptions.makeCustomAnimation(this, R.anim.enter_right_in, R.anim.exit_left_out).toBundle())
+            finish()
         } else {
             Toast.makeText(this, getString(R.string.error),
                     Toast.LENGTH_SHORT).show()
