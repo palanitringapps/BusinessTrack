@@ -23,4 +23,5 @@
     <string name="task_new">New</string>
     <string name="in_progress">In progress</string>
     <string name="completed">Completed</string>
+    <string name="time">04:25</string>
 </resources>

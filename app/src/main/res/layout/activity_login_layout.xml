@@ -13,7 +13,7 @@
             android:layout_marginTop="@dimen/top_margin"
             android:gravity="center"
             android:text="@string/sign_in"
-            android:textColor="@color/sign_bg"
+            android:textColor="#FF2565A0"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

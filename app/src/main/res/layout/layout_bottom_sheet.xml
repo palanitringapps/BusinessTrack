@@ -1,27 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    android:id="@+id/bottomsheet"
+    android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
     android:orientation="vertical"
-    android:padding="4dp"
+    android:padding="8dp"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="40dp"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    xsi:schemaLocation="http://schemas.android.com/apk/res-auto ">
+    app:behavior_peekHeight="10dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_slide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="____"
+        android:textColor="#FFD1D1D1"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_task_id"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/task_is"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_slide" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_elapse"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:text="@string/time"
+        android:textColor="@color/elapse_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_task_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_task_id" />
 
     <com.esri.arcgisruntime.displayroute.SlideToActView
         android:id="@+id/status"
         style="@style/SlideToActView.Example"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="8dp"
         app:area_margin="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_id"
         app:text="@string/complete" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

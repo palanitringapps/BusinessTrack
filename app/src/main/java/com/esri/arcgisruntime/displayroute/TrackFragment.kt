@@ -1,5 +1,6 @@
 package com.esri.arcgisruntime.displayroute
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
@@ -25,6 +27,8 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol
 import com.esri.arcgisruntime.symbology.SimpleLineSymbol
 import com.esri.arcgisruntime.tasks.networkanalysis.RouteTask
 import com.esri.arcgisruntime.tasks.networkanalysis.Stop
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.layout_bottom_sheet.*
 import java.net.MalformedURLException
 import java.util.ArrayList
 import java.util.concurrent.ExecutionException
@@ -38,13 +42,30 @@ class TrackFragment : Fragment() {
     private lateinit var mGraphicsOverlay: GraphicsOverlay
     private lateinit var mStart: Point
     private lateinit var mEnd: Point
-
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.activity_main, container, false)
+        val view = inflater.inflate(R.layout.activity_main, container, false)
         mMapView = view.findViewById(R.id.mapView)
+        val layoutBottomSheet = view.findViewById<ConstraintLayout>(R.id.bottom_sheet)
+        bottomSheetBehavior = BottomSheetBehavior.from(layoutBottomSheet)
+        bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+
+            }
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                    }
+                    BottomSheetBehavior.STATE_DRAGGING, BottomSheetBehavior.STATE_SETTLING -> bottomSheetBehavior!!.setHideable(false)
+                }
+            }
+
+        })
+
         setupMap()
         createGraphicsOverlay()
         setupOAuthManager()
@@ -61,19 +82,19 @@ class TrackFragment : Fragment() {
         mMapView?.getGraphicsOverlays()?.add(mGraphicsOverlay)
     }
 
-    private fun setMapMarker(location: Point) {
-        val pointGraphic = Graphic(location, marker())
+    private fun setMapMarker(location: Point, start: Boolean) {
+        val pointGraphic = Graphic(location, marker(start))
         mGraphicsOverlay.getGraphics().add(pointGraphic)
     }
 
     private fun setStartMarker(location: Point) {
         mGraphicsOverlay.getGraphics().clear()
-        setMapMarker(location)
+        setMapMarker(location, true)
         mStart = location
     }
 
     private fun setEndMarker(location: Point) {
-        setMapMarker(location)
+        setMapMarker(location, false)
         mEnd = location
         findRoute()
     }
@@ -166,14 +187,19 @@ class TrackFragment : Fragment() {
         super.onDestroy()
     }
 
-    private fun marker(): PictureMarkerSymbol {
-        val icon = BitmapFactory.decodeResource(resources, R.drawable.ic_truck)
-        val drawable = BitmapDrawable(resources, icon)
+    private fun marker(start: Boolean): PictureMarkerSymbol {
+
+        val drawable = BitmapDrawable(resources, bitmap(start))
         val markerSymbol = PictureMarkerSymbol(drawable)
         markerSymbol.height = 40f
         markerSymbol.width = 40f
         markerSymbol.offsetY = markerSymbol.height / 2
         markerSymbol.loadAsync()
         return markerSymbol
+    }
+
+    private fun bitmap(start: Boolean): Bitmap {
+        if (start) return BitmapFactory.decodeResource(resources, R.drawable.ic_car)
+        else return BitmapFactory.decodeResource(resources, R.drawable.ic_loc_marker)
     }
 }
