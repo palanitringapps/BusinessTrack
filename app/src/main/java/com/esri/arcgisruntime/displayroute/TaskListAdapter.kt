@@ -1,6 +1,5 @@
 package com.esri.arcgisruntime.displayroute
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -21,8 +20,8 @@ class TaskListAdapter : RecyclerView.Adapter<DataBindViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: DataBindViewHolder, position: Int) {
-
         holder.bind(TaskModel())
+
     }
 
 }

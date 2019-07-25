@@ -2,17 +2,18 @@
 <layout>
 
     <data>
+
         <variable
             name="model"
             type="com.esri.arcgisruntime.displayroute.TaskModel" />
     </data>
-    
-    
+
+
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="4dp">
+        android:layout_height="wrap_content"
+        android:elevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -157,6 +158,7 @@
                 android:text="@string/more_des"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/iv_less"
                 app:layout_constraintStart_toStartOf="parent"
@@ -168,6 +170,7 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="20dp"
                 android:src="@drawable/ic_keyboard_arrow_up"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_more_info" />
 
@@ -176,7 +179,7 @@
                 android:id="@+id/cl_card"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_margin="8dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/shape_payment"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -188,9 +191,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/bg_left_corner_green"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="@string/task_new" />
+                    android:text="@string/task_new"
+                    android:textColor="@android:color/white" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_task_inprogress"
@@ -199,7 +204,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="@string/in_progress" />
+                    android:text="@string/in_progress"
+                    android:textColor="@android:color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_task_completed"
@@ -208,7 +214,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="@string/completed" />
+                    android:text="@string/completed"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
 

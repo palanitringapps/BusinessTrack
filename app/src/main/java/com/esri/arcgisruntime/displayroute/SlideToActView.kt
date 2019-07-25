@@ -11,6 +11,7 @@ import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.util.Xml
 import android.view.MotionEvent
@@ -73,13 +74,13 @@ class SlideToActView @JvmOverloads constructor(
     var typeFace = Typeface.NORMAL
         set(value) {
             field = value
-            mTextView.typeface = Typeface.create("sans-serif-light", value)
+            mTextView.typeface = Typeface.create("sans-serif-light" , value)
             mTextPaint.set(mTextView.paint)
             invalidate()
         }
 
     /** Text Appearance used to fully customize the font */
-    var textAppearance: Int = 0
+    var textAppearance : Int = 0
         set(value) {
             field = value
             if (value != 0) {
@@ -177,7 +178,7 @@ class SlideToActView @JvmOverloads constructor(
     private var mFlagDrawTick: Boolean = false
 
     /** The icon for the drawable */
-    private var mIcon: Int = R.drawable.slidetoact_ic_arrow
+    private var mIcon: Int = R.drawable.ic_swipe
 
     /* -------------------- PAINT & DRAW -------------------- */
     /** Paint used for outer elements */
@@ -281,7 +282,7 @@ class SlideToActView @JvmOverloads constructor(
             mOriginAreaMargin = layoutAttrs.getDimensionPixelSize(R.styleable.SlideToActView_area_margin, resources.getDimensionPixelSize(R.dimen.slidetoact_default_area_margin))
             mActualAreaMargin = mOriginAreaMargin
 
-            mIcon = layoutAttrs.getResourceId(R.styleable.SlideToActView_slider_icon, R.drawable.slidetoact_ic_arrow)
+            mIcon = layoutAttrs.getResourceId(R.styleable.SlideToActView_slider_icon, R.drawable.ic_swipe)
 
             // For icon color. check if the `slide_icon_color` is set.
             // if not check if the `outer_color` is set.

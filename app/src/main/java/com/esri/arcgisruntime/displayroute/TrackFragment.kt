@@ -69,7 +69,7 @@ class TrackFragment : Fragment() {
         setupMap()
         createGraphicsOverlay()
         setupOAuthManager()
-        val start = Point(73.791160, 18.706210, SpatialReferences.getWgs84())
+        val start = Point(80.260850, 13.077610, SpatialReferences.getWgs84())
         setStartMarker(start)
         val end = Point(80.218960, 12.971880, SpatialReferences.getWgs84())
         setEndMarker(end)
@@ -151,7 +151,7 @@ class TrackFragment : Fragment() {
             val basemapType = Basemap.Type.STREETS
             val latitude = 12.971880
             val longitude = 80.218960
-            val levelOfDetail = 12
+            val levelOfDetail = 11
             val map = ArcGISMap(basemapType, latitude, longitude, levelOfDetail)
             mMapView!!.setMap(map)
         }

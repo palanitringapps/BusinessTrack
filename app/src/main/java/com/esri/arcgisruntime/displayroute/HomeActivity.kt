@@ -1,5 +1,6 @@
 package com.esri.arcgisruntime.displayroute
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,6 +16,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bind = DataBindingUtil.setContentView(this, R.layout.activity_home)
         init()
+        val uri = Uri.parse("https://raw.githubusercontent.com/facebook/fresco/master/docs/static/logo.png")
+        bind.ivProfile.setImageURI(uri)
     }
 
     private fun init() {
@@ -38,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
         TabLayoutMediator(bind.tabLayout, bind.viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "Tasks"
-                else -> "Active Task"
+                else -> "Active"
             }
         }.attach()
     }

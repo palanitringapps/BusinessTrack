@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="8dp"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="10dp"
+    app:behavior_peekHeight="84dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -49,7 +49,7 @@
 
     <com.esri.arcgisruntime.displayroute.SlideToActView
         android:id="@+id/status"
-        style="@style/SlideToActView.Example"
+        style="@style/SlideToActView.demo"
         android:layout_marginTop="8dp"
         app:area_margin="4dp"
         app:layout_constraintEnd_toEndOf="parent"
