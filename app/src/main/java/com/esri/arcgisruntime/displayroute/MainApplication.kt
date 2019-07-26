@@ -9,5 +9,6 @@ class MainApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         Fresco.initialize(this)
+        //AIzaSyAEVHZidnKb1DNCoadsPVJaPlVafPhyXMg
     }
 }

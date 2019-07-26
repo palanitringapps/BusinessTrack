@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.esri.arcgisruntime.displayroute.databinding.ActivityHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import android.content.Intent
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -31,7 +33,8 @@ class HomeActivity : AppCompatActivity() {
                         TaskFragment.newInstance()
                     }
                     else -> {
-                        TrackFragment.newInstance()
+                        TrackGoogleFragment()
+                        //TrackFragment.newInstance()
                     }
                 }
             }
@@ -47,5 +50,14 @@ class HomeActivity : AppCompatActivity() {
                 else -> "Active"
             }
         }.attach()
+    }
+
+    override fun onBackPressed() {
+        val startMain = Intent(Intent.ACTION_MAIN)
+        startMain.addCategory(Intent.CATEGORY_HOME)
+        startMain.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(startMain)
+        //super.onBackPressed()
+
     }
 }
